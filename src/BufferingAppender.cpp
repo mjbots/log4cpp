@@ -12,9 +12,9 @@
 
 namespace log4cpp
 {
-   BufferingAppender::BufferingAppender(const std::string name, unsigned long max_size, 
-                                        std::auto_ptr<Appender> sink, std::auto_ptr<TriggeringEventEvaluator> evaluator) 
-                     :LayoutAppender(name), max_size_(max_size), sink_(sink), evaluator_(evaluator), lossy_(false)
+   BufferingAppender::BufferingAppender(const std::string name, unsigned long max_size,
+                                        std::unique_ptr<Appender> sink, std::unique_ptr<TriggeringEventEvaluator> evaluator)
+                     :LayoutAppender(name), max_size_(max_size), sink_(std::move(sink)), evaluator_(std::move(evaluator)), lossy_(false)
    {
       max_size_ = (max)(1UL, max_size_);
    }

@@ -54,7 +54,7 @@ namespace log4cpp
          boost::mutex mails_mutex_;
          boost::condition data_condition_;
          mails_t mails_;
-         std::auto_ptr<boost::thread> sender_thread_;
+         std::unique_ptr<boost::thread> sender_thread_;
          volatile bool should_exit_;
       };
       
@@ -174,12 +174,12 @@ namespace log4cpp
       delete mail_params_;
    }
 
-   std::auto_ptr<Appender> create_smtp_appender(const FactoryParams& params)
+   std::unique_ptr<Appender> create_smtp_appender(const FactoryParams& params)
    {
       std::string name, host, from, to, subject;
       params.get_for("SMTP appender").required("name", name)("host", host)("from", from)
                                               ("to", to)("subject", subject);
-      return std::auto_ptr<Appender>(new SmptAppender(name, host, from, to, subject));
+      return std::unique_ptr<Appender>(new SmptAppender(name, host, from, to, subject));
    }
 }
 #endif // BOOST_VERSION >= 103500
