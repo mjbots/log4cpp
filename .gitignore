@@ -1,4 +1,4 @@
-Compiled source #
+# Compiled source #
 ###################
 *.com
 *.class
@@ -13,3 +13,34 @@ Makefile.in
 Makefile
 *.log
 
+# Libtool artifacts
+.deps
+.libs
+/libtool
+
+# Configure artifacts
+/include/config.h
+/aclocal.m4
+/autom4te.cache/
+/config.status
+/configure
+/config/compile
+/config/depcomp
+/config/install-sh
+/config/test-driver
+/config/ltmain.sh
+/config/missing
+/include/log4cpp/config.h
+/log4cpp-config
+/log4cpp.pc
+/log4cpp.spec
+
+# Doxygen artifacts
+/doc/Doxyfile
+/doc/html/api/
+/doc/man/
+
+# Misc
+/include/stamp-h1
+/tests/testbench
+/tests/testmain
